@@ -16,9 +16,51 @@ A multi-region disaster recovery (DR) plan ensures business continuity by replic
 - Enable **Versioning** on both buckets.
 ![Primary](images/primary.png)
 
+
+![backup](images/backup.png)
+
 **Step 2: Configure IAM Role & Permissions**
 - Create an IAM Role with `s3:ReplicateObject` permission.
 - Attach this role to your primary S3 bucket.
+```bash
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "SourceBucketPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObjectRetention",
+                "s3:GetObjectVersionTagging",
+                "s3:GetObjectVersionAcl",
+                "s3:ListBucket",
+                "s3:GetObjectVersionForReplication",
+                "s3:GetObjectLegalHold",
+                "s3:GetReplicationConfiguration"
+            ],
+            "Resource": [
+                "arn:aws:s3:::primary-bucket-us-east-1-diasator-bucket-mar-09-2026",
+                "arn:aws:s3:::primary-bucket-us-east-1-diasator-bucket-mar-09-2026/*"
+            ]
+        },
+        {
+            "Sid": "DestinationBucketPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ReplicateObject",
+                "s3:ObjectOwnerOverrideToBucketOwner",
+                "s3:ReplicateTags",
+                "s3:ReplicateDelete"
+            ],
+            "Resource": [
+                "arn:aws:s3:::backup-bucket-us-west-2-diasastor-mar-09-2026/*"
+            ]
+        }
+    ]
+}
+```
+----------
 
 **Step 3: Enable Cross-Region Replication**
 - Go to the primary S3 bucket → Select **Replication Rules** → Create a new rule.
