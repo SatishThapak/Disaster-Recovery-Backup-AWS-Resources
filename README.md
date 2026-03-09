@@ -70,6 +70,7 @@ A multi-region disaster recovery (DR) plan ensures business continuity by replic
 
 **Step 4: Validate Replication**
 - Upload files to the primary bucket and check if they are replicated to the backup bucket.
+![primary](images/primary.png)
 
 ![buckup](images/backup.png)
 
