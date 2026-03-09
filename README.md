@@ -14,10 +14,8 @@ A multi-region disaster recovery (DR) plan ensures business continuity by replic
 **Step 1: Create Two S3 Buckets**
 - Navigate to AWS S3 Console → Create two buckets in different AWS regions (e.g., `primary-bucket-us-east-1` and `backup-bucket-us-west-2`).
 - Enable **Versioning** on both buckets.
-![Primary](images/primary.png)
 
-
-![backup](images/backup.png)
+![buckets](images/buckets.png)
 
 **Step 2: Configure IAM Role & Permissions**
 - Create an IAM Role with `s3:ReplicateObject` permission.
@@ -68,8 +66,12 @@ A multi-region disaster recovery (DR) plan ensures business continuity by replic
 - Choose the IAM Role created earlier.
 - Optionally enable **Replica Modification Sync** to replicate ACLs, metadata, and encryption settings.
 
+![rules](images/rules.png)
+
 **Step 4: Validate Replication**
 - Upload files to the primary bucket and check if they are replicated to the backup bucket.
+
+![buckup](images/backup.png)
 
 ---
 
