@@ -1,6 +1,6 @@
 # Disaster Recovery & Backup
 
-## Project 1: Multi-Region Disaster Recovery Plan – Cross-Region Replication for S3 & RDS
+##  Project 2: Multi-Region Disaster Recovery Plan – Cross-Region Replication for S3 & RDS
 
 ### Introduction
 A multi-region disaster recovery (DR) plan ensures business continuity by replicating critical data and applications across AWS regions. In this project, we will set up **Cross-Region Replication (CRR)** for S3 and **Read Replica** for RDS to maintain availability in case of regional failures.
@@ -75,6 +75,8 @@ A multi-region disaster recovery (DR) plan ensures business continuity by replic
 ![buckup](images/backup.png)
 
 ---
+
+
 
 ### 2. Set Up RDS Cross-Region Read Replica
 
@@ -177,3 +179,4 @@ While disaster recovery focuses on availability during regional failures, **back
 
 ## Conclusion
 By implementing **AWS Backup** and **S3 Lifecycle Policies**, we ensure reliable data protection, compliance with retention requirements, and cost optimization. Together with the disaster recovery plan, this provides a complete strategy for resilience and business continuity.
+
